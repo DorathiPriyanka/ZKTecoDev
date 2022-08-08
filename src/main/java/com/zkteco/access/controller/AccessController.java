@@ -1,5 +1,6 @@
 package com.zkteco.access.controller;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -53,7 +55,7 @@ public class AccessController {
 	
 	
 	 @RequestMapping("getAccessDetails")
-	 public ModelAndView getFlatDetails(@Valid @RequestParam int id ){
+	 public ModelAndView getFlatDetails( @RequestParam int id ){
 	    ModelAndView mav = new ModelAndView("getAccessDetails.jsp");
 	
 	    Access access= accessService.getAccessById(id);
@@ -78,7 +80,7 @@ public class AccessController {
 	 
 	 
 	 @RequestMapping("delAccessDetails")
-		public ModelAndView delFlatDetails(@Valid @RequestParam int id )
+		public ModelAndView delFlatDetails(@RequestParam int id )
 		{
 			ModelAndView mav = new ModelAndView("delAccessDetails.jsp");
 			Access access=accessService.deleteAccess(id);
@@ -93,8 +95,21 @@ public class AccessController {
 			ModelAndView mav = new ModelAndView("getAccessName.jsp");
 			
 			List<Access>accessList = accessService.findByName(accessName);
-			
 			mav.addObject(accessList);
+			
+			return mav;
+			
+		}
+	 
+	 
+	 @GetMapping("getDateRange")
+		public ModelAndView getDateRange(@RequestParam Date date1,@RequestParam Date date2)
+		{
+			ModelAndView mav = new ModelAndView("getDateRange.jsp");
+			
+			List<Access>accessList = accessService.findByDate(date1, date2);
+			mav.addObject(accessList);
+			
 			return mav;
 			
 		}

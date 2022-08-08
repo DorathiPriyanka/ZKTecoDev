@@ -1,5 +1,6 @@
 package com.zkteco.access.service;
 
+import java.sql.Date;
 import java.util.List;
 
 
@@ -22,4 +23,7 @@ Access updateAccess(Access access);
 Access deleteAccess(int id);
 
 List<Access> findByName(String accessName);
+
+List<Access> findByDate(Date date1,Date date2);
+
 }

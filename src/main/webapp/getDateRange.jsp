@@ -4,23 +4,21 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Access Details By Name</title>
+<title>Dates</title>
 </head>
 <body>
-
-
-     
-     
-     
-     
-     <%@ page import="java.util.*" %>
+ 
+ 
+ 
+    
+ <%@ page import="java.util.*" %>
     <%@ page import="com.zkteco.access.entity.*" %>
     <% @SuppressWarnings("unchecked") List<Access> accessList=(List<Access>)request.getAttribute("accessList"); %>
     
   <% if(accessList!=null){%>  
   
   
-  <h1 align="center">Access Information Based on Name</h1>
+  <h1 align="center">Access Information  based on Date </h1>
   <table border="1" align="center">
         <th>ID</th>
         <th >AccessName</th>
@@ -49,21 +47,16 @@
  </table> 
  <%}  else{%>
  
- <h1>User is not existed with this name</h1>
+ <h1>User is not existed with this Date</h1>
  <%} %>
 	 
  
- 
-      
-    
-     
-
-<!--  
-     <br><br><br>
-     <form  action="showAllAccessDetails" style="font-size: large;">
+	 <br>
+	 <br>
+	 <form  action="showAllAccessDetails" style="font-size: large;" align="center">
 		Goto Index Page : <input type="submit" value="Home"  align="center">
 	</form>
-	-->
-
+ 
+ 
 </body>
 </html>

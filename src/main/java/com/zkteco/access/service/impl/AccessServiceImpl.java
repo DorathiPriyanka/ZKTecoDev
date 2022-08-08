@@ -1,5 +1,6 @@
 package com.zkteco.access.service.impl;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class AccessServiceImpl implements  AccessService{
 	@Override
 	public Access getAccessById(int id) {
 		Access access = accessrepo.findById(id).orElse(new Access());
-
+		
 		if (access.isEntry()) {
 			access.setEntryAlias("Enabled");
 	    } else {
@@ -81,6 +82,7 @@ public class AccessServiceImpl implements  AccessService{
 	@Override
 	public List<Access> findByName(String accessName) {
 		List<Access>accessList=accessrepo.findByName(accessName);
+		
 		for(Access  access:accessList) {
 			if (access.isEntry()) {
 				access.setEntryAlias("Enabled");
@@ -88,11 +90,34 @@ public class AccessServiceImpl implements  AccessService{
 		    	access.setEntryAlias("Disabled");
 		    }
 			
-			
-			
+		}
+		if (accessList!=null) {
+			return accessList;
+		} else {
+			return null;
 		}
 		
-		return accessrepo.findByName(accessName);
+	
+		
+	}
+
+	@Override
+	public List<Access> findByDate(Date date1,Date date2) {
+		List<Access>accessList=accessrepo.findByDate(date1,date2);
+		for(Access  access:accessList) {
+			if (access.isEntry()) {
+				access.setEntryAlias("Enabled");
+		    } else {
+		    	access.setEntryAlias("Disabled");
+		    }
+			
+		}
+		if (accessList!=null) {
+			return accessList;
+		} else {
+			return null;
+		}
+
 	}
 
 }

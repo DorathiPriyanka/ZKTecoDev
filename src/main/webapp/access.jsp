@@ -39,7 +39,7 @@
      <form action="getAccessName" align="center">
         Enter Name : <input type="text" name="accessName" required placeholder="Enter Name"> <br><br>
         <input type="submit"><br>
-     </form><hr>
+     </form>
      
      
       <h1 align="center">Enter Access Details to Update</h1> <br>
@@ -54,6 +54,15 @@
         Enter ID : <input type="text" name="id" autocomplete="off"> <br>
         <input type="submit"><br>
      </form>
+     
+      <h1 align="center">Access Information in between Dates range</h1>
+     <form action="getDateRange" align="center">
+      Enter StartDate : <input type="date" name="date1" autocomplete="off"> <br>
+      Enter EndDate : <input type="date" name="date2" autocomplete="off"> <br>
+    
+     Get All flats Details :<input type="submit"><br>
+     </form>
+     
 
   
 </body>
